@@ -237,13 +237,13 @@ window.onload = function () {
     false
   );
 
-  canvas.addEventListener(
-    "mouseup",
-    function (e) {
-      clicked = false;
-    },
-    false
-  );
+ // canvas.addEventListener(
+   // "mouseup",
+    //function (e) {
+     // clicked = false;
+    //},
+    //false
+  //);
 
   function loop() {
     window.requestAnimFrame(loop);
