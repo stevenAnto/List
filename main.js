@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded',function(){
   formulario.addEventListener("submit",manejarEnvio)
   boton.addEventListener("click",contar);
   botonEliminar.addEventListener("click",borrar);
-  lista.addEventListener("click",tachar,false);
+  //lista.addEventListener("click",tachar,false);
   imprimir();
   console.log("salio del evento");
 });
