@@ -17,17 +17,19 @@ function borrar(){
   }
 }
 function tachar(evento){
+  evento.preventDefault();
   console.log("entro tachar");
-  console.log("el elementotarge".elemento);
   let elemento = evento.target;
-  console.log("que es el atributo",elemento.style.textDecoration.trim());
+  console.log("el elementotarge",elemento);
+  console.log("que es el atributo",elemento.style.textDecoration.trim);
   if(elemento.style.textDecoration.trim()==='line-through'){
-    console.log("entro if");
+    console.log("cambiara a none");
     elemento.style.textDecoration='none';
   }else{
-    console.log("entro else");
+    console.log("cambiare a line trghouy");
     elemento.style.textDecoration='line-through';
   }
+  console.log("salir tachar");
 }
 
 function manejarEnvio(evento){
@@ -48,6 +50,7 @@ function manejarEnvio(evento){
   let texto = document.createTextNode(localStorage.getItem(counter));
   newElement.appendChild(texto);
   lista.appendChild(newElement);
+  newElement.style.textDecoration='none';
   newElement.addEventListener('click',tachar);
   document.getElementById("form").reset();
 
@@ -90,7 +93,7 @@ document.addEventListener('DOMContentLoaded',function(){
   formulario.addEventListener("submit",manejarEnvio)
   boton.addEventListener("click",contar);
   botonEliminar.addEventListener("click",borrar);
-  //lista.addEventListener("click",tachar,false);
+  //lista.addEventListener("click",tachar);
   imprimir();
   console.log("salio del evento");
 });
