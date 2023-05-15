@@ -11,7 +11,25 @@ function contar(){
 function borrar(){
   console.log("entro borrar");
   localStorage.clear();
+  let eliminar = document.getElementById('myUl');
+  while(eliminar.firstChild){
+    eliminar.removeChild(eliminar.firstChild);
+  }
 }
+function tachar(evento){
+  console.log("entro tachar");
+  console.log("el elementotarge".elemento);
+  let elemento = evento.target;
+  console.log("que es el atributo",elemento.style.textDecoration.trim());
+  if(elemento.style.textDecoration.trim()==='line-through'){
+    console.log("entro if");
+    elemento.style.textDecoration='None';
+  }else{
+    console.log("entro else");
+    elemento.style.textDecoration='line-through';
+  }
+}
+
 function manejarEnvio(evento){
   console.log("entro manejarEnvio");
   evento.preventDefault();
@@ -30,7 +48,7 @@ function manejarEnvio(evento){
   let texto = document.createTextNode(localStorage.getItem(counter));
   newElement.appendChild(texto);
   lista.appendChild(newElement);
-
+  newElement.addEventListener('click',tachar);
   document.getElementById("form").reset();
 
   /*for(let i =0;i<numLocal;i++){
@@ -53,17 +71,28 @@ function imprimir(){
     }
   }
 }
+/*function tachar(evento){
+  console.log("entro tachar");
+  console.log(evento.target.tagName);
+  if(evento.target.tagName==="LI"){
+    console.log("entro if de tachar");
+    evento.target.clasList.toggle('checked');
+  }
+}*/
 document.addEventListener('DOMContentLoaded',function(){
   console.log("cargando funciones");
   var formulario =document.getElementById("form");
   let boton = document.getElementById("btnEnviar");
   let botonEliminar = document.getElementById("btnEliminar");
+  let lista= document.getElementById("myUl");
   console.log(formulario);
   console.log(boton);
   formulario.addEventListener("submit",manejarEnvio)
   boton.addEventListener("click",contar);
   botonEliminar.addEventListener("click",borrar);
+  lista.addEventListener("click",tachar,false);
   imprimir();
   console.log("salio del evento");
 });
+
 
