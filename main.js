@@ -23,7 +23,7 @@ function tachar(evento){
   console.log("que es el atributo",elemento.style.textDecoration.trim());
   if(elemento.style.textDecoration.trim()==='line-through'){
     console.log("entro if");
-    elemento.style.textDecoration='None';
+    elemento.style.textDecoration='none';
   }else{
     console.log("entro else");
     elemento.style.textDecoration='line-through';
